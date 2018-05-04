@@ -1504,3 +1504,78 @@ Filter chain halted as #<Proc:0x00007fbd4c64ad78@/usr/local/lib/ruby/gems/2.5.0/
 Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-05-04 18:05:08 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.5.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 526ms (Views: 510.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2018-05-04 18:05:13 -0400
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 73ms (Views: 42.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2018-05-04 18:05:19 -0400
+Processing by ArticlesController#new as HTML
+Filter chain halted as #<Proc:0x00007fea91dcf270@/usr/local/lib/ruby/gems/2.5.0/gems/actionpack-5.2.0/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2018-05-04 18:05:30 -0400
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (51.7ms)
+  Rendered articles/new.html.erb within layouts/application (55.6ms)
+Completed 200 OK in 90ms (Views: 85.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2018-05-04 18:06:11 -0400
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5NQvUapdXiXyxHxizKL6u+8GESS7J1yUE0p5DIB5zTRGLrRDc7201wsV7MFZXGyOgi+4HUjvYTMfDYfnFmU8+w==", "article"=>{"title"=>"Hopes", "text"=>"I hope I fixed my require_tree error!"}, "commit"=>"Create Article"}
+Filter chain halted as #<Proc:0x00007fea91dcf270@/usr/local/lib/ruby/gems/2.5.0/gems/actionpack-5.2.0/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2018-05-04 18:06:11 -0400
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5NQvUapdXiXyxHxizKL6u+8GESS7J1yUE0p5DIB5zTRGLrRDc7201wsV7MFZXGyOgi+4HUjvYTMfDYfnFmU8+w==", "article"=>{"title"=>"Hopes", "text"=>"I hope I fixed my require_tree error!"}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hopes"], ["text", "I hope I fixed my require_tree error!"], ["created_at", "2018-05-04 22:06:11.725741"], ["updated_at", "2018-05-04 22:06:11.725741"]]
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+Redirected to http://localhost:3000/articles/6
+Completed 302 Found in 7ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/articles/6" for 127.0.0.1 at 2018-05-04 18:06:11 -0400
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:14
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (12.6ms)
+  Rendered articles/show.html.erb within layouts/application (36.6ms)
+Completed 200 OK in 64ms (Views: 57.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2018-05-04 18:06:18 -0400
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 44ms (Views: 41.5ms | ActiveRecord: 0.3ms)
+
+
